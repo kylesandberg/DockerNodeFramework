@@ -1,0 +1,27 @@
+Feature: Scoring
+
+  If NCAA
+    If WAG
+      When gymnast_ID does routine
+      Then event_score = start_value - average(deductions) - neutral_deductions
+      Then AA_score = Gymnast_ID_VT_score + Gymnast_ID_UB_score + Gymnast_ID_BB_score + Gymnast_ID_FX_score
+      
+      Then Team_VT_score = Gymnast_ID_VT_score1 + ... + Gymnast_ID_VT_score6 - min(Gymnast_ID_VT_score1, ..., Gymnast_ID_VT_score6)
+      Then Team_UB_score = Gymnast_ID_UB_score1 + ... + Gymnast_ID_UB_score6 - min(Gymnast_ID_UB_score1, ..., Gymnast_ID_UB_score6)
+      Then Team_BB_score = Gymnast_ID_BB_score1 + ... + Gymnast_ID_BB_score6 - min(Gymnast_ID_BB_score1, ..., Gymnast_ID_BB_score6)
+      Then Team_FX_score = Gymnast_ID_FX_score1 + ... + Gymnast_ID_FX_score6 - min(Gymnast_ID_FX_score1, ..., Gymnast_ID_FX_score6)
+      
+      Then Overall_Team_Score = Team_VT_score + Team_UB_score + Team_BB_score + Team_FX_score - Team_neutral_deduction
+      
+    If MAG
+      When gymnast_ID does routine
+      Then event_score = D_score - average(E_score) - neutral_deductions
+      Then AA_score = Gymnast_ID_FX_score + Gymnast_ID_PH_score + Gymnast_ID_SR_score + Gymnast_VT_floor_score + Gymnast_PB_floor_score + Gymnast_HB_floor_score
+      
+      Then Team_FX_score = Gymnast_ID_FX_score1 + ... + Gymnast_ID_FX_score6 - min(Gymnast_ID_FX_score1, ..., Gymnast_ID_FX_score6)
+      Then Team_PH_score = Gymnast_ID_PH_score1 + ... + Gymnast_ID_PH_score6 - min(Gymnast_ID_PH_score1, ..., Gymnast_ID_PH_score6)
+      Then Team_SR_score = Gymnast_ID_SR_score1 + ... + Gymnast_ID_SR_score6 - min(Gymnast_ID_SR_score1, ..., Gymnast_ID_SR_score6)
+      Then Team_VT_score = Gymnast_ID_VT_score1 + ... + Gymnast_ID_VT_score6 - min(Gymnast_ID_VT_score1, ..., Gymnast_ID_VT_score6)
+      Then Team_PB_score = Gymnast_ID_PB_score1 + ... + Gymnast_ID_PB_score6 - min(Gymnast_ID_PB_score1, ..., Gymnast_ID_PB_score6)
+      Then Team_HB_score = Gymnast_ID_HB_score1 + ... + Gymnast_ID_HB_score6 - min(Gymnast_ID_HB_score1, ..., Gymnast_ID_HB_score6)
+      Then Team_score = top5_Team_ID_FX_score + top5_Team_ID_PH_score + top5_Team_ID_SR_score + top5_Team_ID_VT_score + top5_Team_ID_PB_score + top5_Team_ID_HB_score- Team_Neutral_Deduction
